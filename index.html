@@ -78,10 +78,10 @@
                                     <p>Location: {{product.location}}</p>
                                     <p>Price: £{{product.price}}</p>
                                     <p>Number of spaces: {{product.quantity}}</p>
-                                    <button class="add" v-on:click='addToCart(product)'>
+                                    <button class="add" v-on:click='addToCart(product)' v-if='canAddToCart(product)'>
                                         <span class="fas fa-cart-plus"></span> Add to cart
                                     </button>
-                                    <button class="add" disabled='disabled'>
+                                    <button class="add" disabled='disabled' v-else>
                                         <span class="fas fa-cart-plus"></span> Add to cart
                                     </button>
                                 </div>
@@ -177,6 +177,13 @@
                             break;
                         }
                     }
+                },
+
+                //Function to check quantity of product
+                canAddToCart: function (product) {
+
+                    return product.quantity > 0;
+
                 }
 
             },
