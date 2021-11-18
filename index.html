@@ -70,6 +70,10 @@
 
                         <div v-if='showProduct'>
 
+                            <!--Search bar-->
+                            <input class="search" type="text" v-model="searchItem" placeholder="Search...">
+                            <span class="fas fa-search"></span>
+
                             <!--Sort items by price-->
                             <p>Sort by price:</p>
 
@@ -80,7 +84,7 @@
                             <br>
 
                             <!--Outoput products-->
-                            <ul v-for="product in products">
+                            <ul v-for="product in itemResults">
                                 <div class="output">
                                     <img v-bind:src="product.image" alt="logo.png">
                                     <p>Subject: {{product.title}}</p>
@@ -148,7 +152,8 @@
                 sitename: 'After School Club',
                 products: lessons,
                 cart: [],
-                showProduct: true
+                showProduct: true,
+                searchItem: null
             },
 
             methods: {
@@ -236,6 +241,24 @@
 
                     return this.cart.length || ' ';
 
+                },
+
+                //Function to search for a speacific product
+                itemResults: function () {
+
+                    if (this.searchItem) {
+
+                        return this.products.filter((item) => {
+
+                            return this.searchItem.toLowerCase().split(' ').every(product => item.title.toLowerCase().includes(product))
+
+                        })
+
+                    } else {
+
+                        return this.products;
+
+                    }
                 }
 
             }
