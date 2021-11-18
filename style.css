@@ -39,3 +39,14 @@ p{
     margin-top: 10px;
     margin-left: 730px;
 }
+
+.formStyle{
+    margin-left: 610px;
+}
+
+.checkout{
+    margin-left: 160px;
+    margin-bottom: 10px;
+    background-color: blue;
+    color: white;
+}

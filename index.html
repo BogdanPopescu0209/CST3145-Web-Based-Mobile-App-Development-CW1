@@ -105,6 +105,20 @@
                         <!--Output basket-->
                         <div v-else>
 
+                            <!--Form-->
+                            <div class="formStyle">
+                                <p>
+                                    <input v-model.trim="order.name" type="text" placeholder="Enter name">
+                                </p>
+                                <p>
+                                    <input v-model="order.number" type="text" placeholder="Enter phone number">
+                                </p>
+                                <button class="checkout"
+                                    v-if='!containsNumber.test(order.name) && numberFormat.test(order.number)'
+                                >
+                                    <span class="far fa-credit-card"></span> Checkout
+                                </button>
+                            </div>
 
                             <ul v-for="product in cart">
                                 <div class="output">
@@ -153,7 +167,13 @@
                 products: lessons,
                 cart: [],
                 showProduct: true,
-                searchItem: null
+                searchItem: null,
+                order: {
+                    name: '',
+                    number: ''
+                },
+                numberFormat: /((\+44(\s\(0\)\s|\s0\s|\s)?)|0)7\d{3}(\s)?\d{6}/g,
+                containsNumber: /\d/
             },
 
             methods: {
@@ -169,7 +189,7 @@
                 //Function to check if showProduct is true and show button
                 showBasket() {
 
-                    this.showProduct = this.showProduct ? false : true;
+                    this.showProduct = this.showProduct ? false : true; 
 
                 },
 
