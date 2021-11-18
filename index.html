@@ -114,8 +114,8 @@
                                     <input v-model="order.number" type="text" placeholder="Enter phone number">
                                 </p>
                                 <button class="checkout"
-                                    v-if='!containsNumber.test(order.name) && numberFormat.test(order.number)'
-                                >
+                                    v-if='!onlyLetters.test(order.name) && onlyNumbers.test(order.number)'
+                                    v-on:click='submitForm(order)'>
                                     <span class="far fa-credit-card"></span> Checkout
                                 </button>
                             </div>
@@ -148,7 +148,20 @@
                 <div class="row">
                     <div class="col-lg"></div>
 
-                    <div class="col-lg"></div>
+                    <div class="col-lg">
+
+                        <!--Confirmation-->
+                        <div v-if='showConfirmation'>
+
+                            <strong>
+                                <p>Order confirmed for Mr. {{order.name}} with mobile number {{order.number}}.</p>
+                                <p>Total of items order: {{cartItemCount}}.</p>
+                                <p>Thank you</p>
+                            </strong>
+
+                        </div>
+
+                    </div>
 
                     <div class="col-lg"></div>
                 </div>
@@ -172,8 +185,9 @@
                     name: '',
                     number: ''
                 },
-                numberFormat: /((\+44(\s\(0\)\s|\s0\s|\s)?)|0)7\d{3}(\s)?\d{6}/g,
-                containsNumber: /\d/
+                onlyLetters: /\d/,
+                onlyNumbers: /^[0-9]+$/,
+                showConfirmation: false
             },
 
             methods: {
@@ -189,7 +203,7 @@
                 //Function to check if showProduct is true and show button
                 showBasket() {
 
-                    this.showProduct = this.showProduct ? false : true; 
+                    this.showProduct = this.showProduct ? false : true;
 
                 },
 
@@ -249,6 +263,13 @@
                     }
 
                     return this.products.sort(compare);
+
+                },
+
+                //Function to check if showConfirmation is true and output confirmation
+                submitForm: function () {
+
+                    this.showConfirmation = this.showConfirmation ? false : true;
 
                 }
 
