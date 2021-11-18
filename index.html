@@ -75,7 +75,7 @@
 
                             <button class="sort" v-on:click="sortLowToHigh('price')">Low to High</button>
 
-                            <button class="sort" v-on:click="">High to Low</button>
+                            <button class="sort" v-on:click="sortHighToLow('price')">High to Low</button>
 
                             <br>
 
@@ -203,6 +203,22 @@
                         if (x.price > y.price) return 1;
 
                         if (x.price < y.price) return -1;
+
+                        return 0;
+                    }
+
+                    return this.products.sort(compare);
+
+                },
+
+                //Function to sort items by price from high to low
+                sortHighToLow: function () {
+
+                    function compare(x, y) {
+
+                        if (x.price < y.price) return 1;
+
+                        if (x.price > y.price) return -1;
 
                         return 0;
                     }
