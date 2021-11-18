@@ -61,3 +61,11 @@ p{
     margin-top: 10px;
     margin-left: 520px;
 }
+
+.fas{
+    background-color: cornflowerblue;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}

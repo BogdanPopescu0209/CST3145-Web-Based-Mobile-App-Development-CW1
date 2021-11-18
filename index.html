@@ -77,9 +77,13 @@
                             <!--Sort items by price-->
                             <p>Sort by price:</p>
 
-                            <button class="sort" v-on:click="sortLowToHigh('price')">Low to High</button>
+                            <button class="sort" v-on:click="sortLowToHigh('price')">
+                                <span class="fas fa-sort-up"></span> Low to High
+                            </button>
 
-                            <button class="sort" v-on:click="sortHighToLow('price')">High to Low</button>
+                            <button class="sort" v-on:click="sortHighToLow('price')">
+                                <span class="fas fa-sort-down"></span> High to Low
+                            </button>
 
                             <br>
 
