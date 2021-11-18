@@ -68,22 +68,45 @@
 
                     <main>
 
-                        <!--Outoput products-->
-                        <ul v-for="product in products">
-                            <div class="output">
-                                <img v-bind:src="product.image" alt="logo.png">
-                                <p>Subject: {{product.title}}</p>
-                                <p>Location: {{product.location}}</p>
-                                <p>Price: £{{product.price}}</p>
-                                <p>Number of spaces: {{product.quantity}}</p>
-                                <button class="add" v-on:click='addToCart(product)'>
-                                    <span class="fas fa-cart-plus"></span> Add to cart
-                                </button>
-                                <button class="add" disabled='disabled'>
-                                    <span class="fas fa-cart-plus"></span> Add to cart
-                                </button>
-                            </div>
-                        </ul>
+                        <div v-if='showProduct'>
+
+                            <!--Outoput products-->
+                            <ul v-for="product in products">
+                                <div class="output">
+                                    <img v-bind:src="product.image" alt="logo.png">
+                                    <p>Subject: {{product.title}}</p>
+                                    <p>Location: {{product.location}}</p>
+                                    <p>Price: £{{product.price}}</p>
+                                    <p>Number of spaces: {{product.quantity}}</p>
+                                    <button class="add" v-on:click='addToCart(product)'>
+                                        <span class="fas fa-cart-plus"></span> Add to cart
+                                    </button>
+                                    <button class="add" disabled='disabled'>
+                                        <span class="fas fa-cart-plus"></span> Add to cart
+                                    </button>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                        <!--Output basket-->
+                        <div v-else>
+
+
+                            <ul v-for="product in cart">
+                                <div class="output">
+                                    <img v-bind:src="product.image" alt="logo.png">
+                                    <p>Subject: {{product.title}}</p>
+                                    <p>Location: {{product.location}}</p>
+                                    <p>Price: £{{product.price}}</p>
+                                    <p>Number of spaces: 1</p>
+                                    <button class="add" v-on:click='deleteFromCart(product)'>
+                                        <span class="fas fa-trash"></span> Delete
+                                    </button>
+                                </div>
+                            </ul>
+
+                        </div>
 
                     </main>
 
@@ -115,7 +138,8 @@
             data: {
                 sitename: 'After School Club',
                 products: lessons,
-                cart: []
+                cart: [],
+                showProduct: true
             },
 
             methods: {
