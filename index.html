@@ -68,7 +68,7 @@
                                 <p>Location: {{product.location}}</p>
                                 <p>Price: £{{product.price}}</p>
                                 <p>Number of spaces: {{product.quantity}}</p>
-                                <button class="add">
+                                <button class="add" v-on:click='addToCart(product)'>
                                     <span class="fas fa-cart-plus"></span> Add to cart
                                 </button>
                                 <button class="add" disabled='disabled'>
@@ -111,6 +111,14 @@
             },
 
             methods: {
+
+                //Function to add products to basket and update quantity
+                addToCart: function (product) {
+
+                    this.cart.push(product);
+
+                    product.quantity--;
+                }
 
             },
 
