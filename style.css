@@ -23,3 +23,7 @@ ul{
     background-color: blue;
     color: white;
 }
+
+p{
+    padding-left: 120px;
+}
