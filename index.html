@@ -120,6 +120,18 @@
                                 </button>
                             </div>
 
+
+                            <!--Confirmation-->
+                            <div v-if='showConfirmation' class="outputConfirmation">
+
+                                <strong>
+                                    <p>Order confirmed for Mr. {{order.name}} with mobile number {{order.number}}.</p>
+                                    <p>Total items ordered: {{cartItemCount}}.</p>
+                                    <p>Thank you for your order!</p>
+                                </strong>
+
+                            </div>
+
                             <ul v-for="product in cart">
                                 <div class="output">
                                     <img v-bind:src="product.image" alt="logo.png">
@@ -148,20 +160,7 @@
                 <div class="row">
                     <div class="col-lg"></div>
 
-                    <div class="col-lg">
-
-                        <!--Confirmation-->
-                        <div v-if='showConfirmation'>
-
-                            <strong>
-                                <p>Order confirmed for Mr. {{order.name}} with mobile number {{order.number}}.</p>
-                                <p>Total of items order: {{cartItemCount}}.</p>
-                                <p>Thank you</p>
-                            </strong>
-
-                        </div>
-
-                    </div>
+                    <div class="col-lg"></div>
 
                     <div class="col-lg"></div>
                 </div>
