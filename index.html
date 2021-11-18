@@ -43,6 +43,14 @@
                             <!--Output site name-->
                             <h1 v-text="sitename"></h1>
 
+                            <!--Output basket if cart is not empty-->
+                            <button v-if='cart.length > 0' class="basket" v-on:click='showBasket'>
+
+                                {{cartItemCount}}
+                                <span class="fas fa-shopping-cart"></span> Basket
+
+                            </button>
+
                         </header>
 
                     </div>
@@ -118,11 +126,25 @@
                     this.cart.push(product);
 
                     product.quantity--;
+                },
+
+                //Function to check if showProduct is true and show button
+                showBasket() {
+
+                    this.showProduct = this.showProduct ? false : true;
+
                 }
 
             },
 
             computed: {
+
+                //Function to output total number of items from cart
+                cartItemCount: function () {
+
+                    return this.cart.length || ' ';
+
+                }
 
             }
         })
