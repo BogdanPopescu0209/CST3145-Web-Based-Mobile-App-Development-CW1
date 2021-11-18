@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Link for boostrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!--Link for font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!--Link to external file css-->
+    <link rel="stylesheet" href="style.css">
+
+    <!--Link for vue.js-->
+    <script src="https://unpkg.com/vue"></script>
+
+    <!--Link to external file JavaScript-->
+    <script src="lessons.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container-fluid">
+
+            <!--First row-->
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg"></div>
+
+                    <div class="col-lg">
+
+                        <header>
+
+                            <!--Output site name-->
+                            <h1 v-text="sitename"></h1>
+
+                        </header>
+
+                    </div>
+
+                    <div class="col-lg"></div>
+                </div>
+            </div>
+
+            <br>
+
+            <!--Second row-->
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <main>
+
+                        <!--Outoput products-->
+                        <ul v-for="product in products">
+                            <div class="output">
+                                <img v-bind:src="product.image" alt="logo.png">
+                                <p>Subject: {{product.title}}</p>
+                                <p>Location: {{product.location}}</p>
+                                <p>Price: £{{product.price}}</p>
+                                <p>Number of spaces: {{product.quantity}}</p>
+                                <button class="add">
+                                    <span class="fas fa-cart-plus"></span> Add to cart
+                                </button>
+                                <button class="add" disabled='disabled'>
+                                    <span class="fas fa-cart-plus"></span> Add to cart
+                                </button>
+                            </div>
+                        </ul>
+
+                    </main>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <!--Third row-->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg"></div>
+
+                    <div class="col-lg"></div>
+
+                    <div class="col-lg"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        var vueapp = new Vue({
+            el: '#app',
+            data: {
+                sitename: 'After School Club',
+                products: lessons,
+                cart: []
+            },
+
+            methods: {
+
+            },
+
+            computed: {
+
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
