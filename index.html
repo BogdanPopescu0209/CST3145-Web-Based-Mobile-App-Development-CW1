@@ -290,7 +290,8 @@
 
                         return this.products.filter((item) => {
 
-                            return this.searchItem.toLowerCase().split(' ').every(product => item.title.toLowerCase().includes(product))
+                            return this.searchItem.toLowerCase().split(' ').every(product => item.location.toLowerCase().includes(product) 
+                            || item.title.toLowerCase().includes(product))
 
                         })
 
